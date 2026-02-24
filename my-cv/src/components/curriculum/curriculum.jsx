@@ -3,6 +3,7 @@ import { Box, Typography, Stack, Divider, Chip, Button } from "@mui/material";
 import { motion } from "framer-motion";
 import profile from "../../assets/demo.png";
 import ProfileImage from "../profileImage/profileimage";
+import SectionCard from "../sectionCard/sectionCard";
 
 const MotionBox = motion(Box);
 
@@ -13,7 +14,8 @@ function Curriculum() {
         minHeight: "100vh",
         px: { xs: 3, md: 12 },
         py: 10,
-        background: "linear-gradient(180deg, #fafafa 0%, #f2f2f2 100%)",
+        background:
+          "linear-gradient(180deg, #fafafa 0%, #f3f3f5 50%, #eeeeef 100%)",
         fontFamily:
           "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif",
       }}
@@ -21,22 +23,19 @@ function Curriculum() {
       <MotionBox
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9, ease: "easeOut" }}
+        transition={{ duration: 0.9 }}
       >
         <Stack
           direction={{ xs: "column", md: "row" }}
           spacing={6}
-          sx={{ mb: 8 }}
+          sx={{ mb: 10 }}
         >
           <ProfileImage src={profile} />
 
-          <Stack spacing={2}>
+          <Stack spacing={3}>
             <Typography
               variant="h3"
-              sx={{
-                fontWeight: 600,
-                letterSpacing: "-0.5px",
-              }}
+              sx={{ fontWeight: 600, letterSpacing: "-0.5px" }}
             >
               Jean Aguilar
             </Typography>
@@ -44,140 +43,156 @@ function Curriculum() {
             <Typography
               variant="h6"
               sx={{
-                color: "text.secondary",
-                maxWidth: 700,
-                lineHeight: 1.6,
+                color: "#6e6e73",
+                maxWidth: 750,
+                lineHeight: 1.7,
+                fontWeight: 400,
               }}
             >
-              System-Oriented Software Engineer designing scalable systems —
-              from architecture and cloud infrastructure to refined user
-              experience.
+              System-Oriented Software Engineer specializing in scalable backend
+              architectures, distributed systems, and AI integration. I design
+              and deploy production-ready applications that combine cloud
+              infrastructure, secure APIs, and intelligent services.
             </Typography>
 
-            <Stack direction="row" spacing={2}>
-              <Button
-                variant="contained"
-                // href="/Jean_Aguilar_Mena_Resume.pdf"
-                download
-                sx={{
-                  borderRadius: 8,
-                  textTransform: "none",
-                  px: 4,
-                  py: 1.2,
-                  fontWeight: 500,
-                }}
-              >
-                Download CV
-              </Button>
-            </Stack>
+            <Button
+              variant="contained"
+              href="http://localhost:5173/public/curriculum/Jean_Aguilar_Mena_Resume.pdf"
+              download
+              sx={{
+                alignSelf: "flex-start",
+                borderRadius: "999px",
+                textTransform: "none",
+                px: 4,
+                py: 1.2,
+                fontWeight: 500,
+                background: "#1d1d1f",
+                "&:hover": { background: "#000" },
+              }}
+            >
+              Download CV
+            </Button>
           </Stack>
         </Stack>
 
-        <Divider sx={{ mb: 8 }} />
-
-        <Stack spacing={6}>
-          <Box>
-            <Typography variant="h5" sx={{ fontWeight: 600, mb: 2 }}>
-              Systems & Architecture
+        <Divider sx={{ mb: 10, opacity: 0.4 }} />
+        <Box
+          sx={{
+            display: "grid",
+            gap: 6,
+          }}
+        >
+          <SectionCard title="Systems & Architecture">
+            <Typography
+              sx={{
+                color: "#6e6e73",
+                lineHeight: 1.9,
+                fontSize: "1.05rem",
+              }}
+            >
+              Design and implementation of scalable, event-driven architectures
+              using AWS (Lambda, DynamoDB, EventBridge, S3, CloudFront) and
+              Firebase. Deep understanding of serverless infrastructure, CDN
+              distribution strategies, secure authentication systems (JWT,
+              Cognito, Firebase Auth), and AI-powered backend workflows.
             </Typography>
+          </SectionCard>
 
-            <Typography sx={{ color: "text.secondary", lineHeight: 1.7 }}>
-              Design and implementation of end-to-end scalable architectures
-              using AWS infrastructure, API Gateway, DynamoDB, and CloudFront.
-              Strong understanding of static vs dynamic delivery strategies,
-              authentication flows (JWT, Cognito), and performance-driven
-              frontend architecture.
-            </Typography>
-          </Box>
+          <SectionCard title="Impact">
+            <Box
+              sx={{
+                display: "grid",
+                gridTemplateColumns: { xs: "1fr", md: "1fr 1fr" },
+                gap: 3,
+              }}
+            >
+              {[
+                "Architected scalable cloud systems integrating CDN and dynamic APIs.",
+                "Designed secure authentication flows with JWT & AWS Cognito.",
+                "Optimized backend communication reducing network overhead.",
+                "Built modular, production-ready distributed systems.",
+                "Integrated AI APIs with inference validation, rate limiting, and cost optimization.",
+                "Structured AI-driven backend pipelines enabling intelligent features.",
+                "Currently developing an AI-powered Virtual Try-On platform with distributed infrastructure.",
+              ].map((item, index) => (
+                <Typography
+                  key={index}
+                  sx={{
+                    color: "#6e6e73",
+                    lineHeight: 1.8,
+                    fontSize: "1rem",
+                  }}
+                >
+                  {item}
+                </Typography>
+              ))}
+            </Box>
+          </SectionCard>
 
-          <Box>
-            <Typography variant="h5" sx={{ fontWeight: 600, mb: 2 }}>
-              Impact
-            </Typography>
-
-            <Typography sx={{ color: "text.secondary", lineHeight: 1.7 }}>
-              • Designed cloud-based architectures integrating CDN and dynamic
-              APIs • Implemented secure authentication flows with JWT & AWS
-              Cognito • Optimized data delivery reducing unnecessary backend
-              calls • Built production-ready applications with maintainable
-              system design • Currently developing AI-based Virtual Try-On
-              platform with scalable backend infrastructure
-            </Typography>
-          </Box>
-          <Box>
-            <Typography variant="h5" sx={{ fontWeight: 600, mb: 2 }}>
-              Experience
-            </Typography>
-
-            <Typography sx={{ color: "text.secondary", lineHeight: 1.7 }}>
+          <SectionCard title="Experience">
+            <Typography sx={{ color: "#6e6e73", lineHeight: 1.9 }}>
               Software Developer at Helbits — contributing to scalable digital
-              health systems with focus on architecture clarity, performance,
-              and production-ready frontend engineering.
+              health systems with focus on backend architecture clarity, API
+              design, performance optimization, and production-ready frontend
+              engineering. Designing maintainable system structures balancing
+              user experience and infrastructure scalability.
             </Typography>
-          </Box>
+          </SectionCard>
 
-          <Box>
-            <Typography variant="h5" sx={{ fontWeight: 600, mb: 3 }}>
-              Core Skills
-            </Typography>
-
+          <SectionCard title="Core Skills">
             <Stack direction="row" flexWrap="wrap" gap={1.5}>
               {[
                 "React",
                 "TypeScript",
+                "Node.js",
                 "System Design",
-                "AWS",
-                "firebase",
-                "API Architecture",
-                "Cognito",
-                "JWT",
+                "AWS (Lambda, DynamoDB, S3)",
+                "Firebase",
+                "Serverless Architecture",
+                "REST API Design",
+                "JWT & Cognito",
                 "CloudFront",
-                "DynamoDB",
+                "Event-Driven Systems",
                 "Performance Optimization",
-                "State Management",
-                "Scalable Web Apps",
-                "AI Integration",
+                "Distributed Systems",
+                "AI API Integration",
+                "AI-Oriented Backend Design",
+                "Secure API Orchestration",
               ].map((skill) => (
                 <Chip
                   key={skill}
                   label={skill}
                   sx={{
-                    borderRadius: 6,
+                    borderRadius: "999px",
+                    px: 2,
+                    height: 36,
                     fontWeight: 500,
-                    backgroundColor: "#ffffff",
-                    boxShadow: "0 1px 4px rgba(0,0,0,0.05)",
+                    background: "rgba(0,0,0,0.05)",
+                    color: "#1d1d1f",
+                    transition: "all .4s cubic-bezier(.22,1,.36,1)",
+                    "&:hover": {
+                      background: "rgba(0,0,0,0.1)",
+                      transform: "scale(1.05)",
+                    },
                   }}
                 />
               ))}
             </Stack>
-          </Box>
+          </SectionCard>
 
-          <Box>
-            <Typography variant="h5" sx={{ fontWeight: 600, mb: 2 }}>
-              Philosophy
+          <SectionCard title="Philosophy">
+            <Typography sx={{ color: "#6e6e73", lineHeight: 1.9 }}>
+              I value clarity in architecture, scalability in systems, and
+              intentional design in user experience. I build software that is
+              not only functional, but sustainable and structurally elegant.
             </Typography>
-
-            <Typography sx={{ color: "text.secondary", lineHeight: 1.7 }}>
-              I care about clarity. I design systems that scale. I think beyond
-              features — I think in flows, infrastructure, and long-term
-              maintainability.
-            </Typography>
-          </Box>
-
-          <Box>
-            <Typography variant="h5" sx={{ fontWeight: 600, mb: 2 }}>
-              Professional Reference
-            </Typography>
-
-            <Typography sx={{ color: "text.secondary" }}>
+          </SectionCard>
+          <SectionCard title={"References"}>
+            <Typography sx={{ color: "#6e6e73", lineHeight: 1.9 }}>
               Gerald Vindas Aguilar — Software Development Engineer 2, Amazon
             </Typography>
-            <Divider></Divider>
-            <Typography sx={{ color: "text.secondary" }}>
-              geraldvindasa@gmail.com
-            </Typography>
-          </Box>
-        </Stack>
+          </SectionCard>
+        </Box>
       </MotionBox>
     </Box>
   );
