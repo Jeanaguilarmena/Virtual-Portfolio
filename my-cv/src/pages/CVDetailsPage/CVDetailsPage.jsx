@@ -34,7 +34,7 @@ function CVDetailsPage() {
     ],
 
     liveDemo: virtualcvVideo,
-    githubLink: "https://github.com/Jeanaguilarmena/Try-on",
+    githubLink: "https://github.com/Jeanaguilarmena/Virtual-Portfolio",
   };
   return (
     <Box>
